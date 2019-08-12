@@ -12,3 +12,8 @@ after_success:
     - docker build -t sebge2/multi-docker-nginx ./nginx
     - docker build -t sebge2/multi-docker-server ./server
     - docker build -t sebge2/multi-docker-worker ./worker
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push sebge2/multi-docker-client
+    - docker push sebge2/multi-docker-nginx
+    - docker push sebge2/multi-docker-server
+    - docker push sebge2/multi-docker-worker
